@@ -3,4 +3,21 @@
 */
 
 function wait(n) {
+  return new Promise((res, rej) =>
+    setTimeout((ele) => {
+      res();
+    }, n * 1000)
+  );
+}
+
+try {
+  wait(4)
+    .then(() => {
+      console.log("Resoled now");
+    })
+    .catch((err) => {
+      console.log(`${err.message}`);
+    });
+} catch (error) {
+  console.log(error);
 }

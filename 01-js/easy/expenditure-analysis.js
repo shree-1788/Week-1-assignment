@@ -9,21 +9,23 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  let catSum = {};
-  for (let trans of transactions) {
-    const { category, price } = trans;
-    if (category in catSum) {
-      catSum[category] += price;
+  let result = [];
+  for (let i = 0; i < transactions.length; i++) {
+    let transaction = transactions[i];
+    const existingCat = result.find(
+      (ele) => ele.category === transaction.category
+    );
+    if (existingCat) {
+      existingCat.totalSpent += transaction.price;
     } else {
-      catSum[category] = price;
+      let newCategory = {
+        category: transaction.category,
+        totalSpent: transaction.price,
+      };
+      result.push(newCategory);
     }
   }
-  let result = [];
-  for (let key in catSum) {
-    result.push({
-      [key]: catSum[key],
-    });
-  }
+
   return result;
 }
 

@@ -18,7 +18,7 @@
 */
 
 class Calculator {
-  // Let's do it tommorow
+  
 }
 
 module.exports = Calculator;
